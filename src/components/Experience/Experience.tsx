@@ -4,6 +4,7 @@ import { Screen } from "src/components/Screen";
 import { ScreenHeader } from "src/components/ScreenHeader";
 import { motion } from "motion/react";
 import { Card } from "src/components/Experience/elements/Card";
+import { useState } from "react";
 
 const experiences = [
   {
@@ -74,6 +75,12 @@ const experiences = [
 ];
 
 export function Experience() {
+  const [expandedIndex, setExpandedIndex] = useState<number>();
+
+  const handleExpand = (index: number) => {
+    setExpandedIndex((prev) => (prev === index ? undefined : index));
+  };
+
   return (
     <Screen>
       <div className="flex-col flex">
@@ -88,7 +95,7 @@ export function Experience() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true }}
               className="relative pl-8"
             >
               {/* Timeline line segment */}
@@ -97,7 +104,7 @@ export function Experience() {
                 whileInView={{
                   height: index === experiences.length - 1 ? "100%" : "130%",
                 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className={`
               absolute left-0 top-6 w-[2px] bg-primary
@@ -109,7 +116,7 @@ export function Experience() {
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true }}
                 transition={{
                   type: "spring",
                   stiffness: 300,
@@ -124,6 +131,8 @@ export function Experience() {
               />
 
               <Card
+                isExpanded={expandedIndex === index}
+                onExpand={() => handleExpand(index)}
                 company={exp.company}
                 role={exp.role}
                 description={exp.description}

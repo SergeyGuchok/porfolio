@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 import { motion } from "motion/react";
 import { ChevronDown } from "lucide-react";
 
@@ -12,22 +10,20 @@ type Props = {
   achievements: string[];
   technologies: string[];
   period: string;
+  onExpand: () => void;
+  isExpanded: boolean;
 };
 
 export function Card({
   company,
+  isExpanded,
+  onExpand,
   role,
   description,
   achievements,
   technologies,
   period,
 }: Props) {
-  const [isExpanded, setIsExpanded] = useState<boolean>();
-
-  const handleExpand = () => {
-    setIsExpanded((prev) => !prev);
-  };
-
   return (
     <>
       <motion.div
@@ -35,7 +31,7 @@ export function Card({
               bg-secondary rounded-lg overflow-hidden cursor-pointer
               transition-all duration-300 ease-in-out
             `}
-        onClick={handleExpand}
+        onClick={onExpand}
         layout
       >
         <div className="p-4 sm:p-6">

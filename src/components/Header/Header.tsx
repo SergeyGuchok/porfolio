@@ -9,40 +9,32 @@ export function Header() {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
+
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted) return null;
+  const knobX = theme === "dark" ? 40 : 0;
 
   return (
-    <div className={`fixed right-24 top-24`}>
+    <div className="fixed top-24 right-24">
       <button
         onClick={toggleTheme}
-        className={`
-        relative h-10 w-20 rounded-full p-2
-        bg-primary/20
-        transition-colors duration-500
-        hover:bg-zinc-700/30 dark:hover:bg-zinc-300/30
-        focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
-      `}
         aria-label="Toggle theme"
+        className="relative h-10 w-20 rounded-full p-2 bg-primary/20 transition-colors duration-500 hover:bg-zinc-700/30 dark:hover:bg-zinc-300/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
         <motion.div
           className="absolute top-1 left-1 h-8 w-8 rounded-full"
-          initial={{
-            x: theme === "dark" ? 40 : 0,
-          }}
-          animate={{
-            x: theme === "dark" ? 40 : 0,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 20,
-          }}
+          initial={{ x: knobX }}
+          animate={{ x: knobX }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
           <div className="flex h-full w-full items-center justify-center rounded-full bg-background shadow-sm dark:bg-zinc-950">
             {theme === "dark" ? (
