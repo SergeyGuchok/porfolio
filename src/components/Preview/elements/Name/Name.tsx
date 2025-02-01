@@ -2,7 +2,6 @@
 
 import { CSSProperties } from "react";
 import { motion } from "motion/react";
-import { useTheme } from "next-themes";
 
 const draw = {
   hidden: { pathLength: 0, opacity: 0 },
@@ -27,8 +26,6 @@ const shape: CSSProperties = {
 };
 
 export function Name() {
-  const { theme } = useTheme();
-
   return (
     <div className="w-full h-full flex items-center justify-center">
       <motion.svg

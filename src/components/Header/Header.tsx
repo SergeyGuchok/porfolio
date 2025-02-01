@@ -23,7 +23,7 @@ export function Header() {
         onClick={toggleTheme}
         className={`
         relative h-10 w-20 rounded-full p-2
-        bg-zinc-700/20 dark:bg-zinc-300/20
+        bg-primary/20
         transition-colors duration-500
         hover:bg-zinc-700/30 dark:hover:bg-zinc-300/30
         focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
