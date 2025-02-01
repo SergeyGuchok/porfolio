@@ -1,23 +1,12 @@
-"use client";
-
 import { Screen } from "src/components/Screen";
 import { motion } from "motion/react";
 
-import { TECH_STACK_PRIMARY } from "src/screens/TechStack/constants";
+import { TECH_STACK_PRIMARY } from "src/screens/TechStack/constants/techStack";
+import { motionVariants } from "src/screens/TechStack/constants/motionVariants";
 import { ScreenHeader } from "src/components/ScreenHeader";
 import { Tech } from "src/screens/TechStack/elements/Tech";
 
 import type { IconType } from "src/icons";
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
 
 export function TechStack() {
   return (
@@ -25,10 +14,10 @@ export function TechStack() {
       <div className="flex flex-col w-full">
         <ScreenHeader
           title="Tech Stack"
-          subtitle="My Tech Stack is big. Now I mostly work with this:"
+          subtitle="I've worked with plenty of technologies. Now I mostly work with this:"
         />
         <motion.div
-          variants={containerVariants}
+          variants={motionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}

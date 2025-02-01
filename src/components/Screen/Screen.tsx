@@ -1,5 +1,3 @@
-"use client";
-
 import { HTMLProps } from "react";
 import { AnimatePresence } from "motion/react";
 import { ReactNode } from "react";

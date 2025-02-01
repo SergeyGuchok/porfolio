@@ -1,17 +1,8 @@
 import { motion } from "motion/react";
 
 import type { IconType } from "src/icons";
-import {
-  Docker,
-  Tanstack,
-  Next,
-  React,
-  Mongo,
-  TypeScript,
-  Supabase,
-  Sequelize,
-  TailwindCSS,
-} from "src/icons";
+import { ICON_MAPPER } from "src/screens/TechStack/elements/constants/iconMapper";
+import { motionVariants } from "src/screens/TechStack/elements/constants/motionVariants";
 
 type Props = {
   name: string;
@@ -19,39 +10,12 @@ type Props = {
   icon: IconType;
 };
 
-const cardVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
-
-const ICON_MAPPER = {
-  react: React,
-  next: Next,
-  typescript: TypeScript,
-  tailwind: TailwindCSS,
-  supabase: Supabase,
-  tanstack: Tanstack,
-  docker: Docker,
-  mongo: Mongo,
-  sequelize: Sequelize,
-};
-
 export function Tech({ name, description, icon }: Props) {
   const Icon = ICON_MAPPER[icon];
 
   return (
     <motion.div
-      variants={cardVariants}
+      variants={motionVariants}
       drag
       dragSnapToOrigin
       dragTransition={{

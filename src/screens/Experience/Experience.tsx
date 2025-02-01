@@ -1,5 +1,3 @@
-"use client";
-
 import { Screen } from "src/components/Screen";
 import { ScreenHeader } from "src/components/ScreenHeader";
 import { motion } from "motion/react";
@@ -31,7 +29,6 @@ export function Experience() {
               viewport={{ once: true }}
               className="relative pl-8"
             >
-              {/* line */}
               <motion.div
                 initial={{ height: 0 }}
                 whileInView={{
@@ -45,7 +42,6 @@ export function Experience() {
             `}
               />
 
-              {/* dot */}
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}

@@ -5,7 +5,7 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { motion } from "motion/react";
 
-export function Header() {
+export function ThemeSwitcher() {
   const { setTheme, theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 

@@ -1,55 +1,72 @@
 import { Copy, Loader2 } from "lucide-react";
-import { useState } from "react";
-import type { ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import { sendFeedback } from "src/actions/sendFeedback";
 import { motion } from "motion/react";
-
-const variants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
+import { motionVariants } from "src/screens/Feedback/elements/Editor/constants/motionVariants";
+import { Button } from "src/components/Button/Button";
 
 export function Editor() {
-  const [content, setContent] = useState("");
-  const [lineCount, setLineCount] = useState(1);
-  const [isSendingMessage, setIsSendingMessage] = useState(false);
-  const [actionOutput, setActionOutput] = useState("");
+  const [state, setState] = useState({
+    content: "",
+    lineCount: 1,
+    isSending: false,
+    actionOutput: "",
+  });
 
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const newContent = e.target.value;
-    setContent(newContent);
-    setLineCount((newContent.match(/\n/g) || []).length + 1);
+    const content = e.target.value;
+
+    setState((prev) => ({
+      ...prev,
+      content,
+      lineCount: Math.min(20, (content.match(/\n/g) || []).length + 1),
+    }));
   };
 
   const copyToClipboard = async () => {
+    const { content } = state;
+
     if (content) {
-      await navigator.clipboard.writeText(content);
+      await navigator.clipboard.writeText(state.content);
     }
   };
 
   const handleSendFeedback = async () => {
+    const { content } = state;
+
     if (!content.trim()) return;
 
-    setIsSendingMessage(true);
-    setActionOutput("");
+    setState((prev) => ({ ...prev, isSending: true, actionOutput: "" }));
+
     try {
+      const { content } = state;
+
       const result = await sendFeedback(content);
-      setActionOutput(result.output);
+
+      setState((prev) => ({
+        ...prev,
+        actionOutput: result.output,
+        isSending: false,
+      }));
     } catch {
-      setActionOutput("Compilation failed. Please try again.");
-    } finally {
-      setIsSendingMessage(false);
+      setState((prev) => ({
+        ...prev,
+        actionOutput: "Failed to send. Please try again.",
+        isSending: false,
+      }));
     }
+  };
+
+  const getStatusMessage = () => {
+    const { isSending, actionOutput } = state;
+
+    if (isSending && !actionOutput) return "Sending message...";
+
+    if (!isSending && !actionOutput) return "Waiting...";
+
+    if (actionOutput && !isSending) return "Message sent!";
+
+    return null;
   };
 
   return (
@@ -57,13 +74,11 @@ export function Editor() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      variants={variants}
+      variants={motionVariants}
       className="w-full max-w-3xl overflow-hidden rounded-lg border-[0.5px] border-zinc-400/20 bg-[#1F2937] shadow-2xl"
     >
-      {/* title */}
       <div className="flex h-12 items-center justify-between bg-[#2D3748] px-4">
         <div className="flex items-center gap-2">
-          {/* light buttons */}
           <div className="flex gap-2">
             <div className="h-3 w-3 rounded-full bg-[#FF5F56]" />
             <div className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
@@ -73,23 +88,24 @@ export function Editor() {
             SendMessage.tsx
           </div>
         </div>
-        <button
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
           onClick={copyToClipboard}
-          className="rounded p-1.5 text-zinc-400 hover:bg-zinc-700/50"
+          className="text-zinc-400 hover:bg-zinc-700/50"
         >
           <Copy className="h-4 w-4" />
           <span className="sr-only">Copy code</span>
-        </button>
+        </Button>
       </div>
 
-      {/* editor area */}
       <div className="flex">
-        {/* lines */}
         <div
           className="select-none border-r border-zinc-700/50 bg-[#1F2937] px-4 py-4 text-right font-mono text-sm text-zinc-500"
           aria-hidden="true"
         >
-          {Array.from({ length: Math.max(lineCount, 20) }, (_, i) => (
+          {Array.from({ length: Math.max(state.lineCount, 3) }, (_, i) => (
             <div key={i + 1} className="leading-6">
               {i + 1}
             </div>
@@ -97,45 +113,38 @@ export function Editor() {
         </div>
 
         <textarea
-          value={content}
-          aria-disabled={!!actionOutput || isSendingMessage}
-          disabled={!!actionOutput || isSendingMessage}
+          value={state.content}
+          aria-disabled={state.isSending}
+          disabled={state.isSending}
           onChange={handleTextChange}
           className="flex-1 bg-[#1F2937] px-4 py-4 font-mono text-sm leading-6 text-zinc-100 caret-blue-500 outline-none disabled:cursor-not-allowed"
           placeholder="Type your message..."
           spellCheck="false"
           rows={20}
-          style={{
-            resize: "none",
-          }}
+          maxLength={1000}
+          style={{ resize: "none" }}
         />
       </div>
 
-      {/* bottom panel */}
       <div className="border-t border-zinc-700/50 bg-[#2D3748]">
         <div className="flex items-center justify-between px-4 py-3">
-          <div className="text-sm text-zinc-400">
-            {isSendingMessage && !actionOutput ? "Sending message..." : null}
-            {!isSendingMessage && !actionOutput ? "Waiting..." : null}
-            {actionOutput && !isSendingMessage ? "Message sent!" : null}
-          </div>
-          <button
+          <div className="text-sm text-zinc-400">{getStatusMessage()}</div>
+          <Button
+            type="button"
             onClick={handleSendFeedback}
-            aria-disabled={
-              !!actionOutput || isSendingMessage || !content.trim()
-            }
-            disabled={!!actionOutput || isSendingMessage || !content.trim()}
-            className="bg-blue-600 hover:bg-blue-700 px-4 py-2 cursor-pointer rounded-xl text-zinc-100 disabled:bg-blue-600/50 disabled:cursor-not-allowed flex gap-1 items-center"
+            aria-disabled={state.isSending || !state.content.trim()}
+            disabled={state.isSending || !state.content.trim()}
+            className="bg-blue-600 hover:bg-blue-700 text-zinc-100 disabled:bg-blue-600/50"
           >
-            {isSendingMessage ? (
+            {state.isSending ? (
               <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                <Loader2 className="h-4 w-4 animate-spin" />
                 Sending
               </>
             ) : (
               "Compile"
             )}
-          </button>
+          </Button>
         </div>
       </div>
     </motion.div>

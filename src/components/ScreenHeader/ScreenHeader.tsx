@@ -1,24 +1,9 @@
-"use client";
-
 import { motion } from "motion/react";
+import { motionVariants } from "src/components/ScreenHeader/constants/motionVariants";
 
 type Props = {
   title: string;
   subtitle?: string;
-};
-
-const headerVariants = {
-  hidden: {
-    opacity: 0,
-    y: 20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-  transition: {
-    duration: 0.5,
-  },
 };
 
 export function ScreenHeader({ title, subtitle }: Props) {
@@ -26,7 +11,7 @@ export function ScreenHeader({ title, subtitle }: Props) {
     <motion.div
       whileInView="visible"
       initial="hidden"
-      variants={headerVariants}
+      variants={motionVariants}
       viewport={{ once: true }}
       className="mb-12"
     >

@@ -1,5 +1,3 @@
-"use client";
-
 import { Screen } from "src/components/Screen";
 import { ScreenHeader } from "src/components/ScreenHeader";
 import { Editor } from "src/screens/Feedback/elements/Editor";
