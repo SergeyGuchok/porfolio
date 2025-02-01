@@ -3,9 +3,9 @@
 import { Screen } from "src/components/Screen";
 import { motion } from "motion/react";
 
-import { TECH_STACK_PRIMARY } from "src/components/TechStack/constants";
+import { TECH_STACK_PRIMARY } from "src/screens/TechStack/constants";
 import { ScreenHeader } from "src/components/ScreenHeader";
-import { Tech } from "src/components/TechStack/elements/Tech";
+import { Tech } from "src/screens/TechStack/elements/Tech";
 
 import type { IconType } from "src/icons";
 

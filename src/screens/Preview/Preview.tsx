@@ -1,8 +1,10 @@
 "use client";
 
 import { Screen } from "src/components/Screen";
-import { Name } from "src/components/Preview/elements/Name";
+import { Name } from "src/screens/Preview/elements/Name";
 import { motion } from "motion/react";
+import { Button } from "src/components/Button";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 const h2MotionProps = {
   initial: {
@@ -69,6 +71,28 @@ export function Preview() {
           I build exceptional digital experiences that combine elegant design
           with robust functionality.
         </motion.h2>
+        <div className="flex gap-6">
+          <Button type="anchor" link="mailto:gck.sergey@gmail.com">
+            <Mail className="mr-2 h-4 w-4" />
+            Contact me
+          </Button>
+          <Button
+            variant="outline"
+            type="anchor"
+            link="https://github.com/SergeyGuchok"
+          >
+            <Github className="mr-2 h-4 w-4" />
+            Github
+          </Button>
+          <Button
+            variant="outline"
+            type="anchor"
+            link="https://www.linkedin.com/in/sergey-guchok-b7418818b/"
+          >
+            <Linkedin className="mr-2 h-4 w-4" />
+            LinkedIn
+          </Button>
+        </div>
       </motion.div>
       <Name />
     </Screen>

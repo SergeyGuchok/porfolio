@@ -1,7 +1,7 @@
 import { Copy, Loader2 } from "lucide-react";
 import { useState } from "react";
 import type { ChangeEvent } from "react";
-import { sendFeedback } from "src/actions/sendFeedbback";
+import { sendFeedback } from "src/actions/sendFeedback";
 import { motion } from "motion/react";
 
 const variants = {
@@ -60,10 +60,10 @@ export function Editor() {
       variants={variants}
       className="w-full max-w-3xl overflow-hidden rounded-lg border-[0.5px] border-zinc-400/20 bg-[#1F2937] shadow-2xl"
     >
-      {/* Title Bar */}
+      {/* title */}
       <div className="flex h-12 items-center justify-between bg-[#2D3748] px-4">
         <div className="flex items-center gap-2">
-          {/* Traffic Light Buttons */}
+          {/* light buttons */}
           <div className="flex gap-2">
             <div className="h-3 w-3 rounded-full bg-[#FF5F56]" />
             <div className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
@@ -82,9 +82,9 @@ export function Editor() {
         </button>
       </div>
 
-      {/* Editor Area */}
+      {/* editor area */}
       <div className="flex">
-        {/* Line Numbers */}
+        {/* lines */}
         <div
           className="select-none border-r border-zinc-700/50 bg-[#1F2937] px-4 py-4 text-right font-mono text-sm text-zinc-500"
           aria-hidden="true"
@@ -96,7 +96,6 @@ export function Editor() {
           ))}
         </div>
 
-        {/* Textarea */}
         <textarea
           value={content}
           aria-disabled={!!actionOutput || isSendingMessage}
@@ -112,9 +111,8 @@ export function Editor() {
         />
       </div>
 
-      {/* Bottom Panel */}
+      {/* bottom panel */}
       <div className="border-t border-zinc-700/50 bg-[#2D3748]">
-        {/* Action Bar */}
         <div className="flex items-center justify-between px-4 py-3">
           <div className="text-sm text-zinc-400">
             {isSendingMessage && !actionOutput ? "Sending message..." : null}
