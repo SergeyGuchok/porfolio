@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+
 import { motionVariants } from "src/components/ScreenHeader/constants/motionVariants";
 
 type Props = {

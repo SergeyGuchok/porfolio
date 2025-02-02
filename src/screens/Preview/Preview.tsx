@@ -1,29 +1,20 @@
-import { Screen } from "src/components/Screen";
-import { Name } from "src/screens/Preview/elements/Name";
-import { motion, useScroll, useSpring } from "motion/react";
-import { Button } from "src/components/Button";
 import { Github, Linkedin, Mail } from "lucide-react";
-import { CallToScroll } from "src/screens/Preview/elements/CallToScroll";
+import { motion } from "motion/react";
+
+import { Button } from "src/components/Button";
+import { Screen } from "src/components/Screen";
+import { useHasScrolled } from "src/hooks/useHasScrolled";
 import {
-  h1MotionVariants,
-  h2MotionVariants,
   badgeMotionVariants,
   buttonsMotionVariants,
+  h1MotionVariants,
+  h2MotionVariants,
 } from "src/screens/Preview/constants/motionVariants";
-import { useEffect, useRef, useState } from "react";
+import { CallToScroll } from "src/screens/Preview/elements/CallToScroll";
+import { Name } from "src/screens/Preview/elements/Name";
 
 export function Preview() {
-  const [isShown, setIsShown] = useState(true);
-
-  const [hasScrolled, setHasScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const hasScrolled = useHasScrolled(10);
 
   return (
     <Screen footer={!hasScrolled ? <CallToScroll /> : false}>

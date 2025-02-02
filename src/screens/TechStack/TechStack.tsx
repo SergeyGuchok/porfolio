@@ -1,12 +1,11 @@
-import { Screen } from "src/components/Screen";
 import { motion } from "motion/react";
 
-import { TECH_STACK_PRIMARY } from "src/screens/TechStack/constants/techStack";
-import { motionVariants } from "src/screens/TechStack/constants/motionVariants";
+import { Screen } from "src/components/Screen";
 import { ScreenHeader } from "src/components/ScreenHeader";
-import { Tech } from "src/screens/TechStack/elements/Tech";
-
 import type { IconType } from "src/icons";
+import { motionVariants } from "src/screens/TechStack/constants/motionVariants";
+import { TECH_STACK_PRIMARY } from "src/screens/TechStack/constants/techStack";
+import { Tech } from "src/screens/TechStack/elements/Tech";
 
 export function TechStack() {
   return (

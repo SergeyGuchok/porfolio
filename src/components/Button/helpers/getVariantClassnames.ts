@@ -1,5 +1,5 @@
+import type { ButtonSize,ButtonVariant } from "src/components/Button/types";
 import { cn } from "src/utils/cn";
-import type { ButtonVariant, ButtonSize } from "src/components/Button/types";
 
 export const getVariantClassnames = ({
   variant = "default",

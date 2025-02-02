@@ -1,9 +1,10 @@
+import { useState } from "react";
+import { motion } from "motion/react";
+
 import { Screen } from "src/components/Screen";
 import { ScreenHeader } from "src/components/ScreenHeader";
-import { motion } from "motion/react";
-import { Card } from "src/screens/Experience/elements/Card";
-import { useState } from "react";
 import { experiences } from "src/screens/Experience/constants/experience";
+import { Card } from "src/screens/Experience/elements/Card";
 
 export function Experience() {
   const [expandedIndex, setExpandedIndex] = useState<number>();

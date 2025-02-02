@@ -1,10 +1,12 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "src/components/ThemeProvider";
+
 import { ScrollProgress } from "src/components/ScrollProgress";
+import { ThemeProvider } from "src/components/ThemeProvider";
 import { ThemeSwitcher } from "src/components/ThemeSwitcher";
+
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

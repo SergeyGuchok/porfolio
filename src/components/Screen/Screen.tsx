@@ -1,7 +1,7 @@
 "use client";
 
-import { HTMLProps, useRef } from "react";
 import type { ReactNode } from "react";
+import { HTMLProps, useRef } from "react";
 import {
   motion,
   useMotionValue,
@@ -9,8 +9,9 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import { cn } from "src/utils/cn";
+
 import { FloatingBackground } from "src/components/Screen/elements/FloatingBackground";
+import { cn } from "src/utils/cn";
 
 interface ParallaxSectionProps {
   children: ReactNode;

@@ -1,7 +1,7 @@
 import * as React from "react";
-import type { ButtonProps, LinkProps } from "src/components/Button/types";
-import { getVariantClassnames } from "src/components/Button/helpers/getVariantClassnames";
 
+import { getVariantClassnames } from "src/components/Button/helpers/getVariantClassnames";
+import type { ButtonProps, LinkProps } from "src/components/Button/types";
 import { cn } from "src/utils/cn";
 
 type Props = ButtonProps | LinkProps;

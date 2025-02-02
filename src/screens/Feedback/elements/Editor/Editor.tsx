@@ -1,9 +1,10 @@
+import { type ChangeEvent,useState } from "react";
 import { Copy, Loader2 } from "lucide-react";
-import { useState, type ChangeEvent } from "react";
-import { sendFeedback } from "src/actions/sendFeedback";
 import { motion } from "motion/react";
-import { motionVariants } from "src/screens/Feedback/elements/Editor/constants/motionVariants";
+
+import { sendFeedback } from "src/actions/sendFeedback";
 import { Button } from "src/components/Button/Button";
+import { motionVariants } from "src/screens/Feedback/elements/Editor/constants/motionVariants";
 
 export function Editor() {
   const [state, setState] = useState({

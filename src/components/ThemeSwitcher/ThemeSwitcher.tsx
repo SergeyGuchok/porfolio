@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Moon, Sun } from "lucide-react";
+import { useEffect,useState } from "react";
 import { useTheme } from "next-themes";
+import { Moon, Sun } from "lucide-react";
 import { motion } from "motion/react";
 
 export function ThemeSwitcher() {

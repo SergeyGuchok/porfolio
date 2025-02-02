@@ -1,10 +1,11 @@
 "use client";
 
-import { Preview } from "src/screens/Preview";
-import { TechStack } from "src/screens/TechStack";
+import { AnimatePresence } from "motion/react";
+
 import { Experience } from "src/screens/Experience";
 import { Feedback } from "src/screens/Feedback/Feedback";
-import { AnimatePresence } from "motion/react";
+import { Preview } from "src/screens/Preview";
+import { TechStack } from "src/screens/TechStack";
 
 export default function Page() {
   return (
