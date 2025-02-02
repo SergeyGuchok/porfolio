@@ -13,7 +13,7 @@ export function Experience() {
   };
 
   return (
-    <Screen>
+    <Screen hasFloatingBackground>
       <div className="flex-col flex">
         <ScreenHeader
           title="Work Experience"
