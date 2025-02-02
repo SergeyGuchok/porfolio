@@ -24,7 +24,7 @@ export function ThemeSwitcher() {
   const knobX = theme === "dark" ? 40 : 0;
 
   return (
-    <div className="fixed top-24 right-24 z-20">
+    <div className="fixed lg:top-24 lg:right-24 z-20 top-8 right-8">
       <button
         onClick={toggleTheme}
         aria-label="Toggle theme"

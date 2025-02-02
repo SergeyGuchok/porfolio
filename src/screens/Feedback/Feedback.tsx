@@ -5,7 +5,7 @@ import { Footer } from "src/components/Footer";
 
 export function Feedback() {
   return (
-    <Screen className="bg-secondary" footer={<Footer />}>
+    <Screen className="bg-secondary" footer={<Footer />} hasFloatingBackground>
       <div className="w-full flex flex-col">
         <ScreenHeader
           title="Leave me a message"

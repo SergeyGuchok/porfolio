@@ -52,13 +52,13 @@ export function Screen({
       ref={ref}
       onMouseMove={hasFloatingBackground ? handleMouseMove : undefined}
       className={cn(
-        "relative w-screen h-screen overflow-hidden 2xl:px-48",
+        "relative w-screen h-screen overflow-hidden 2xl:px-20 xl:px-12 lg:px-[28px] md:px-[20px] sm:px-[16px] px-[12px]",
         className,
       )}
     >
       <motion.div
         style={{ y, opacity }}
-        className={`z-10 w-full flex justify-between items-center ${!!footer ? "h-[calc(100%-64px)]" : "h-full"}`}
+        className="z-10 w-full flex justify-between items-center h-full"
       >
         {hasFloatingBackground
           ? Array.from({ length: 20 }, (_, index) => (

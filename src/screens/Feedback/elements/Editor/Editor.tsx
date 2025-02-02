@@ -75,7 +75,7 @@ export function Editor() {
       whileInView="visible"
       viewport={{ once: true }}
       variants={motionVariants}
-      className="w-full max-w-3xl overflow-hidden rounded-lg border-[0.5px] border-zinc-400/20 bg-[#1F2937] shadow-2xl"
+      className="relative w-full max-w-3xl overflow-hidden rounded-lg border-[0.5px] border-zinc-400/20 bg-[#1F2937] shadow-2xl"
     >
       <div className="flex h-12 items-center justify-between bg-[#2D3748] px-4">
         <div className="flex items-center gap-2">

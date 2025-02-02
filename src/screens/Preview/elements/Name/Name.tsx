@@ -25,16 +25,12 @@ const shape: CSSProperties = {
 
 export function Name() {
   return (
-    <div className="w-full h-full flex items-center justify-center">
+    <div className="hidden lg:flex lg:items-center lg:justify-center lg:visible">
       <motion.svg
         viewBox="0 0 900 450"
         initial="hidden"
         animate="visible"
-        className={`
-            w-[280px] sm:w-[400px] md:w-[600px] lg:w-[800px] xl:w-[900px]
-            h-auto
-            stroke-primary
-          `}
+        className="lg:w-[450px] xl:w-[600px] 2xl:w-[800px] h-auto stroke-primary"
       >
         <motion.path
           d="M 170 100 C 170 70, 140 60, 110 60 C 80 60, 50 70, 50 100 C 50 130, 80 140, 110 150 C 140 160, 170 170, 170 200 C 170 230, 140 240, 110 240 C 80 240, 50 230, 50 200"

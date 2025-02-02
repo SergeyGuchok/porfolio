@@ -13,13 +13,13 @@ export function Experience() {
   };
 
   return (
-    <Screen hasFloatingBackground>
-      <div className="flex-col flex">
+    <Screen>
+      <div className="flex flex-col w-full">
         <ScreenHeader
           title="Work Experience"
           subtitle="My professional journey"
         />
-        <div className="relative space-y-6">
+        <div className="relative space-y-4 sm:space-y-6">
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.company}
@@ -27,7 +27,7 @@ export function Experience() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="relative pl-8"
+              className="relative sm:pl-8 pl-4"
             >
               <motion.div
                 initial={{ height: 0 }}
@@ -36,10 +36,7 @@ export function Experience() {
                 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`
-              absolute left-0 top-6 w-[2px] bg-primary
-              ${index === experiences.length - 1 ? "h-0" : ""}
-            `}
+                className={`absolute left-0 top-6 w-[2px] bg-primary ${index === experiences.length - 1 ? "h-0" : ""}`}
               />
 
               <motion.div
@@ -52,11 +49,7 @@ export function Experience() {
                   damping: 20,
                   delay: index * 0.1,
                 }}
-                className={`
-              absolute left-[-5px] top-6 w-3 h-3 rounded-full 
-              bg-primary
-              transition-colors duration-200
-            `}
+                className="absolute left-[-4px] sm:left-[-5px] top-6 w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-primary transition-colors duration-200"
               />
 
               <Card

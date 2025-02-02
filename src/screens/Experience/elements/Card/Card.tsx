@@ -25,26 +25,26 @@ export function Card({
   return (
     <>
       <motion.div
-        className={`
-              bg-secondary rounded-lg overflow-hidden cursor-pointer
-              transition-all duration-300 ease-in-out
-            `}
+        className="bg-secondary rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ease-in-out"
         onClick={onExpand}
         layout
       >
-        <div className="p-4 sm:p-6">
-          <div className="flex items-center justify-between">
+        <div className="p-3 sm:p-4 md:p-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="space-y-1">
-              <h3 className="font-semibold text-primary">{role}</h3>
-              <p className="text-sm text-gray-400">
+              <h3 className="font-semibold text-primary text-base sm:text-lg">
+                {role}
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-400">
                 {company} • {period}
               </p>
             </div>
             <motion.div
               animate={{ rotate: isExpanded ? 180 : 0 }}
               transition={{ duration: 0.2 }}
+              className="self-end sm:self-center"
             >
-              <ChevronDown className="h-5 w-5 text-zinc-400" />
+              <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-zinc-400" />
             </motion.div>
           </div>
 
@@ -60,27 +60,32 @@ export function Card({
             }}
             className="overflow-hidden"
           >
-            <div className="pt-4 space-y-4">
-              <p className="text-sm text-zinc-400">{description}</p>
+            <div className="pt-3 sm:pt-4 space-y-3 sm:space-y-4">
+              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                {description}
+              </p>
 
               <div className="space-y-2">
-                <h4 className="text-sm font-medium text-primary">
+                <h4 className="text-xs sm:text-sm font-medium text-primary">
                   Key Achievements:
                 </h4>
-                <ul className="list-disc list-inside space-y-1">
+                <ul className="list-disc list-inside space-y-1.5">
                   {achievements.map((achievement, i) => (
-                    <li key={i} className="text-sm text-zinc-400">
+                    <li
+                      key={i}
+                      className="text-xs sm:text-sm text-zinc-400 leading-relaxed"
+                    >
                       {achievement}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                    className="px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs rounded-full bg-primary/10 text-primary"
                   >
                     {tech}
                   </span>
