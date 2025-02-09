@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 import type { MotionValue } from "motion/react";
 import { motion, useTransform } from "motion/react";
 

@@ -8,7 +8,7 @@ import { useMediaQuery } from "src/hooks/useMediaQuery";
 import { motionVariants } from "src/screens/Feedback/elements/Editor/constants/motionVariants";
 
 export function Editor() {
-  const isSmallScreen = useMediaQuery('(max-width: 640px)');
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
   const [state, setState] = useState({
     content: "",
     lineCount: 1,
@@ -87,9 +87,7 @@ export function Editor() {
             <div className="h-3 w-3 rounded-full bg-[#FFBD2E]" />
             <div className="h-3 w-3 rounded-full bg-[#27C93F]" />
           </div>
-          <div className="ml-4 text-sm font-medium text-zinc-400">
-            SendMessage.tsx
-          </div>
+          <div className="ml-4 text-sm font-medium text-zinc-400">SendMessage.tsx</div>
         </div>
         <Button
           type="button"

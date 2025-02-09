@@ -31,9 +31,7 @@ export function Card({
       <div className="p-3 sm:p-4 md:p-6">
         <div className="flex flex-row sm:items-center justify-between gap-2">
           <div className="space-y-1">
-            <h3 className="font-semibold text-primary text-base sm:text-lg">
-              {role}
-            </h3>
+            <h3 className="font-semibold text-primary text-base sm:text-lg">{role}</h3>
             <p className="text-xs sm:text-sm text-gray-400">
               {company} • {period}
             </p>
@@ -60,20 +58,13 @@ export function Card({
           className="overflow-hidden"
         >
           <div className="pt-3 sm:pt-4 space-y-3 sm:space-y-4">
-            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-              {description}
-            </p>
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">{description}</p>
 
             <div className="space-y-2">
-              <h4 className="text-xs sm:text-sm font-medium text-primary">
-                Key Achievements:
-              </h4>
+              <h4 className="text-xs sm:text-sm font-medium text-primary">Key Achievements:</h4>
               <ul className="list-disc list-inside space-y-1.5">
                 {achievements.map((achievement, i) => (
-                  <li
-                    key={i}
-                    className="text-xs sm:text-sm text-zinc-400 leading-relaxed"
-                  >
+                  <li key={i} className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
                     {achievement}
                   </li>
                 ))}

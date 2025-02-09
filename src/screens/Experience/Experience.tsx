@@ -14,17 +14,14 @@ export function Experience() {
     setExpandedIndex((prev) => (prev === index ? undefined : index));
   };
 
-  const isSmallScreen = useMediaQuery('(max-width: 640px)');
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
 
   const experiencesToRender = isSmallScreen ? experiences.slice(0, 3) : experiences;
 
   return (
     <Screen>
       <div className="flex flex-col w-full">
-        <ScreenHeader
-          title="Work Experience"
-          subtitle="My professional journey"
-        />
+        <ScreenHeader title="Work Experience" subtitle="My professional journey" />
         <div className="relative space-y-4 sm:space-y-6">
           {experiencesToRender.map((exp, index) => (
             <motion.div

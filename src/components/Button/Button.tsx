@@ -6,13 +6,7 @@ import { cn } from "src/utils/cn";
 
 type Props = ButtonProps | LinkProps;
 
-export function Button({
-  className,
-  variant,
-  size = "default",
-  link,
-  ...props
-}: Props) {
+export function Button({ className, variant, size = "default", link, ...props }: Props) {
   if (props.type === "anchor") {
     return (
       <a
@@ -25,10 +19,5 @@ export function Button({
     );
   }
 
-  return (
-    <button
-      className={cn(getVariantClassnames({ variant, size, className }))}
-      {...props}
-    />
-  );
+  return <button className={cn(getVariantClassnames({ variant, size, className }))} {...props} />;
 }

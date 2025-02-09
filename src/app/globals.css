@@ -1,4 +1,4 @@
-@import 'normalize.css';
+@import "normalize.css";
 
 @tailwind base;
 @tailwind components;
@@ -77,12 +77,12 @@
 }
 
 * {
-  scrollbar-width: none;      
-  -ms-overflow-style: none;   
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 *::-webkit-scrollbar {
-  display: none;  
+  display: none;
 }
 
 @layer base {
@@ -95,5 +95,8 @@
 }
 
 body {
-  font-family: Geist, GeistMono Fallback, sans-serif;
+  font-family:
+    Geist,
+    GeistMono Fallback,
+    sans-serif;
 }

@@ -29,18 +29,14 @@ export function Preview() {
           {...h2MotionVariants}
           className="font-normal text-lg leading-loose max-w-[600px] text-center xl:text-2xl"
         >
-          I like to spend my days building things for customers, and my nights building things for myself. 
+          I like to spend my days building things for customers, and my nights building things for
+          myself.
         </motion.h3>
         <motion.div
           {...buttonsMotionVariants}
           className="flex w-full flex-col mt-4 gap-3 md:flex-row md:w-auto"
         >
-          <Button
-            size="lg"
-            type="anchor"
-            link="mailto:gck.sergey@gmail.com"
-            data-track="email"
-          >
+          <Button size="lg" type="anchor" link="mailto:gck.sergey@gmail.com" data-track="email">
             <Mail className="mr-2 h-4 w-4" />
             Contact me
           </Button>
@@ -55,7 +51,7 @@ export function Preview() {
             Github
           </Button>
           <Button
-            size="lg" 
+            size="lg"
             variant="outline"
             type="anchor"
             link="https://www.linkedin.com/in/sergey-guchok-b7418818b/"

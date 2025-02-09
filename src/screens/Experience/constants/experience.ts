@@ -42,8 +42,7 @@ export const experiences = [
     company: "EVRYTHNG",
     role: "Fullstack Software Engineer",
     period: "Dec 2021 - Aug 2022",
-    description:
-      "Worked on a SaaS platform for multiple product verification via QR code.",
+    description: "Worked on a SaaS platform for multiple product verification via QR code.",
     technologies: ["TypeScript", "GraphQL", "Express", "Material UI", "AWS"],
     achievements: [
       "Built custom Express service for inner purpose",
@@ -58,14 +57,7 @@ export const experiences = [
     period: "Dec 2020 - Dec 2021",
     description:
       "Maintained and contributed to multiple online-gaming related web applications. Was highly involved in optimization and accessibility improvements.",
-    technologies: [
-      "React",
-      "Context API",
-      "SCSS",
-      "Jest",
-      "Enzyme",
-      "Ant Design",
-    ],
+    technologies: ["React", "Context API", "SCSS", "Jest", "Enzyme", "Ant Design"],
     achievements: [
       "Fixed multiple UI issues",
       "Improved web apps performance",
@@ -79,15 +71,7 @@ export const experiences = [
     period: "May 2019 - Dec 2020",
     description:
       "Gained experience in production frontend development. Worked on 3 different projects, got promoted to middle developer in 1 year.",
-    technologies: [
-      "React",
-      "Redux",
-      "Angular",
-      "Python",
-      "Git",
-      "Styled-Components",
-      "Webpack",
-    ],
+    technologies: ["React", "Redux", "Angular", "Python", "Git", "Styled-Components", "Webpack"],
     achievements: [
       "Contributed to development of 3 core apps for US dealership company",
       "Built widely-used context AD components for dealership website",

@@ -2,13 +2,7 @@
 
 import type { ReactNode } from "react";
 import { HTMLProps, useRef } from "react";
-import {
-  motion,
-  useMotionValue,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 
 import { FloatingBackground } from "src/components/Screen/elements/FloatingBackground";
 import { cn } from "src/utils/cn";
@@ -57,24 +51,19 @@ export function Screen({
       className={cn(
         "relative w-screen h-[100dvh] overflow-hidden 2xl:px-20 xl:px-12 lg:px-[28px] md:px-[20px] sm:px-[16px] px-[12px] py-4",
         className,
-        hasReducedHeight && "h-[calc(100dvh-100px)]",
+        hasReducedHeight && "h-[calc(100dvh-100px)]"
       )}
     >
       <motion.div
         style={{ y, opacity }}
         className={cn(
           "z-10 w-full flex justify-between items-center h-full",
-          !!footer && "h-[calc(100vh-64px)]",
+          !!footer && "h-[calc(100vh-64px)]"
         )}
       >
         {hasFloatingBackground
           ? Array.from({ length: 20 }, (_, index) => (
-              <FloatingBackground
-                springX={springX}
-                springY={springY}
-                index={index}
-                key={index}
-              />
+              <FloatingBackground springX={springX} springY={springY} index={index} key={index} />
             ))
           : null}
         {children}
