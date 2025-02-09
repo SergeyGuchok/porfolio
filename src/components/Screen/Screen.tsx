@@ -5,6 +5,7 @@ import { HTMLProps, useRef } from "react";
 import { motion, useMotionValue, useScroll, useSpring, useTransform } from "motion/react";
 
 import { FloatingBackground } from "src/components/Screen/elements/FloatingBackground";
+import { useMediaQuery } from "src/hooks/useMediaQuery";
 import { cn } from "src/utils/cn";
 
 interface ParallaxSectionProps {
@@ -22,6 +23,7 @@ export function Screen({
   hasFloatingBackground,
   hasReducedHeight,
 }: ParallaxSectionProps) {
+  const isSmallScreen = useMediaQuery("(max-width: 640px)");
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -44,6 +46,8 @@ export function Screen({
     mouseY.set((clientY - top - height / 2) / 4);
   };
 
+  console.log(y, opacity);
+
   return (
     <section
       ref={ref}
@@ -55,7 +59,7 @@ export function Screen({
       )}
     >
       <motion.div
-        style={{ y, opacity }}
+        style={isSmallScreen ? {} : { y, opacity }}
         className={cn(
           "z-10 w-full flex justify-between items-center h-full",
           !!footer && "h-[calc(100vh-64px)]"
