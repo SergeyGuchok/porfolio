@@ -6,6 +6,7 @@ import { sendFeedback } from "src/actions/sendFeedback";
 import { Button } from "src/components/Button/Button";
 import { useMediaQuery } from "src/hooks/useMediaQuery";
 import { motionVariants } from "src/screens/Feedback/elements/Editor/constants/motionVariants";
+import { checkRateLimit } from "src/utils/rateLimiter";
 
 export function Editor() {
   const isSmallScreen = useMediaQuery("(max-width: 640px)");
@@ -14,6 +15,7 @@ export function Editor() {
     lineCount: 1,
     isSending: false,
     actionOutput: "",
+    isRateLimited: false,
   });
 
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -39,11 +41,21 @@ export function Editor() {
 
     if (!content.trim()) return;
 
+    const { allowed, remainingTime } = checkRateLimit();
+
+    if (!allowed) {
+      const hours = Math.ceil(remainingTime! / (1000 * 60 * 60));
+      setState((prev) => ({
+        ...prev,
+        actionOutput: `Rate limit exceeded. Please try again in ${hours} hours.`,
+        isRateLimited: true,
+      }));
+      return;
+    }
+
     setState((prev) => ({ ...prev, isSending: true, actionOutput: "" }));
 
     try {
-      const { content } = state;
-
       const { success, error } = await sendFeedback(content);
 
       setState((prev) => ({
@@ -61,13 +73,15 @@ export function Editor() {
   };
 
   const getStatusMessage = () => {
-    const { isSending, actionOutput } = state;
+    const { isSending, actionOutput, isRateLimited } = state;
+
+    if (isRateLimited) return actionOutput;
 
     if (isSending && !actionOutput) return "Sending message...";
 
     if (!isSending && !actionOutput) return "Waiting...";
 
-    if (actionOutput && !isSending) return "Message sent!";
+    if (actionOutput && !isSending) return actionOutput;
 
     return null;
   };
