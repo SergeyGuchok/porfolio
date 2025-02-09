@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 
 import { Screen } from "src/components/Screen";
 import { ScreenHeader } from "src/components/ScreenHeader";
+import { useMediaQuery } from "src/hooks/useMediaQuery";
 import { experiences } from "src/screens/Experience/constants/experience";
 import { Card } from "src/screens/Experience/elements/Card";
 
@@ -13,6 +14,10 @@ export function Experience() {
     setExpandedIndex((prev) => (prev === index ? undefined : index));
   };
 
+  const isSmallScreen = useMediaQuery('(max-width: 640px)');
+
+  const experiencesToRender = isSmallScreen ? experiences.slice(0, 3) : experiences;
+
   return (
     <Screen>
       <div className="flex flex-col w-full">
@@ -21,7 +26,7 @@ export function Experience() {
           subtitle="My professional journey"
         />
         <div className="relative space-y-4 sm:space-y-6">
-          {experiences.map((exp, index) => (
+          {experiencesToRender.map((exp, index) => (
             <motion.div
               key={exp.company}
               initial={{ opacity: 0, x: 20 }}

@@ -28,21 +28,6 @@ export const h1MotionVariants = {
   },
 };
 
-export const badgeMotionVariants = {
-  initial: {
-    opacity: 0,
-    y: -20,
-  },
-  animate: {
-    opacity: 1,
-    y: 0,
-  },
-  transition: {
-    duration: 1,
-    delay: 0.6,
-  },
-};
-
 export const buttonsMotionVariants = {
   initial: {
     opacity: 0,

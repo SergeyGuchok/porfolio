@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@openpanel/nextjs": "^1.0.7",
     "clsx": "2.1.1",
     "eslint-config-prettier": "10.0.1",
     "eslint-plugin-prettier": "5.2.3",
@@ -21,6 +22,7 @@
     "prettier-plugin-tailwindcss": "0.6.11",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "resend": "^4.1.2",
     "tailwind-merge": "2.6.0"
   },
   "devDependencies": {

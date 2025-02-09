@@ -18,6 +18,7 @@ interface ParallaxSectionProps {
   footer?: ReactNode;
   className?: HTMLProps<HTMLElement>["className"];
   hasFloatingBackground?: boolean;
+  hasReducedHeight?: boolean;
 }
 
 export function Screen({
@@ -25,6 +26,7 @@ export function Screen({
   footer,
   className,
   hasFloatingBackground,
+  hasReducedHeight,
 }: ParallaxSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -49,17 +51,21 @@ export function Screen({
   };
 
   return (
-    <div
+    <section
       ref={ref}
       onMouseMove={hasFloatingBackground ? handleMouseMove : undefined}
       className={cn(
-        "relative w-screen h-screen overflow-hidden 2xl:px-20 xl:px-12 lg:px-[28px] md:px-[20px] sm:px-[16px] px-[12px]",
+        "relative w-screen h-[100dvh] overflow-hidden 2xl:px-20 xl:px-12 lg:px-[28px] md:px-[20px] sm:px-[16px] px-[12px] py-4",
         className,
+        hasReducedHeight && "h-[calc(100dvh-100px)]",
       )}
     >
       <motion.div
         style={{ y, opacity }}
-        className="z-10 w-full flex justify-between items-center h-full"
+        className={cn(
+          "z-10 w-full flex justify-between items-center h-full",
+          !!footer && "h-[calc(100vh-64px)]",
+        )}
       >
         {hasFloatingBackground
           ? Array.from({ length: 20 }, (_, index) => (
@@ -73,7 +79,7 @@ export function Screen({
           : null}
         {children}
       </motion.div>
-      {footer ? footer : null}
-    </div>
+      {!!footer ? footer : null}
+    </section>
   );
 }

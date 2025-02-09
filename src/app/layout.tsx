@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { OpenPanelComponent } from '@openpanel/nextjs';
 
 import { ScrollProgress } from "src/components/ScrollProgress";
 import { ThemeProvider } from "src/components/ThemeProvider";
@@ -34,6 +35,13 @@ export default function RootLayout({
       <body
         className={`antialiased overflow-x-hidden ${geistSans.variable} ${geistMono.variable}`}
       >
+        <OpenPanelComponent
+          clientId={process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID as string}
+          trackScreenViews={true}
+          trackAttributes={true}
+          trackOutgoingLinks={true}
+
+      />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <ScrollProgress />
           <ThemeSwitcher />

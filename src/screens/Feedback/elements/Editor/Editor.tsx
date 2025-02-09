@@ -1,12 +1,14 @@
-import { type ChangeEvent,useState } from "react";
+import { type ChangeEvent, useState } from "react";
 import { Copy, Loader2 } from "lucide-react";
 import { motion } from "motion/react";
 
 import { sendFeedback } from "src/actions/sendFeedback";
 import { Button } from "src/components/Button/Button";
+import { useMediaQuery } from "src/hooks/useMediaQuery";
 import { motionVariants } from "src/screens/Feedback/elements/Editor/constants/motionVariants";
 
 export function Editor() {
+  const isSmallScreen = useMediaQuery('(max-width: 640px)');
   const [state, setState] = useState({
     content: "",
     lineCount: 1,
@@ -20,7 +22,7 @@ export function Editor() {
     setState((prev) => ({
       ...prev,
       content,
-      lineCount: Math.min(20, (content.match(/\n/g) || []).length + 1),
+      lineCount: Math.min(isSmallScreen ? 10 : 20, (content.match(/\n/g) || []).length + 1),
     }));
   };
 
@@ -42,11 +44,11 @@ export function Editor() {
     try {
       const { content } = state;
 
-      const result = await sendFeedback(content);
+      const { success, error } = await sendFeedback(content);
 
       setState((prev) => ({
         ...prev,
-        actionOutput: result.output,
+        actionOutput: success ? "Message sent!" : String(error),
         isSending: false,
       }));
     } catch {
@@ -121,7 +123,7 @@ export function Editor() {
           className="flex-1 bg-[#1F2937] px-4 py-4 font-mono text-sm leading-6 text-zinc-100 caret-blue-500 outline-none disabled:cursor-not-allowed"
           placeholder="Type your message..."
           spellCheck="false"
-          rows={20}
+          rows={isSmallScreen ? 10 : 20}
           maxLength={1000}
           style={{ resize: "none" }}
         />
@@ -131,6 +133,7 @@ export function Editor() {
         <div className="flex items-center justify-between px-4 py-3">
           <div className="text-sm text-zinc-400">{getStatusMessage()}</div>
           <Button
+            data-track="send-feedback"
             type="button"
             onClick={handleSendFeedback}
             aria-disabled={state.isSending || !state.content.trim()}

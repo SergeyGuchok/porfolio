@@ -29,7 +29,7 @@ export function Card({
       layout
     >
       <div className="p-3 sm:p-4 md:p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+        <div className="flex flex-row sm:items-center justify-between gap-2">
           <div className="space-y-1">
             <h3 className="font-semibold text-primary text-base sm:text-lg">
               {role}
@@ -41,7 +41,7 @@ export function Card({
           <motion.div
             animate={{ rotate: isExpanded ? 180 : 0 }}
             transition={{ duration: 0.2 }}
-            className="self-end sm:self-center"
+            className="self-center"
           >
             <ChevronDown className="h-4 w-4 sm:h-5 sm:w-5 text-zinc-400" />
           </motion.div>
